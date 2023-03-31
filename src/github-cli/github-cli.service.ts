@@ -8,7 +8,6 @@ import {
   GIT_PUSH_URL_BASE,
   TEMP_DIR,
   TEMPLATE_MAIN_BRANCH,
-  TEMPLATE_PR_BRANCH,
 } from '../constants';
 
 // We can't use the GH API to create a new repo with a pull request from a template.

@@ -12,7 +12,6 @@ export const TEMPLATE_REPO = 'candidate-sse-take-home-challenge-template';
 export const TEMPLATE_REPO_URL =
   'github.com/Clipboard-recruiting/candidate-sse-take-home-challenge-template.git';
 export const TEMPLATE_MAIN_BRANCH = 'main';
-export const TEMPLATE_PR_BRANCH = 'add-rating-block';
 
 export const REPO_PREFIX = 'candidate-sse-take-home-challenge';
 
