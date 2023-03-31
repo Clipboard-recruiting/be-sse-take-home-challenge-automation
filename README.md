@@ -2,15 +2,15 @@
 Automates creating and archiving a PR interview repository
 
 ## Endpoints
-`GET /pr-interviews`  
-List 30 most recent PR interview repos.
+`GET /be-sse-interviews`  
+List 30 most recent BE SSE Take Home Challenge repos.
 
-`POST /pr-interviews`  
+`POST /be-sse-interviews`  
 body: `{ username: '<candidate github username>' }`  
-Create a new PR interview. Automates creating the repo, inviting the candidate, and creating the pull request for the interview.  
+Create a new BE SSE Take Home Challenge. Automates creating the repo, inviting the candidate, and creating the pull request for the interview.  
 
-`DELETE /pr-interviews/:repoName`  
-Archives a PR interview repo.
+`DELETE /be-sse-interviews/:repoName`  
+Archives a BE SSE Take Home Challenge repo.
 
 `GET /health-check/public`  
 `GET /health-check/private`

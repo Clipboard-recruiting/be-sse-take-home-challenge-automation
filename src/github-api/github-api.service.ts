@@ -3,7 +3,6 @@ import { Octokit } from '@octokit/rest';
 import {
   ACCESS_TOKEN,
   ORG_NAME,
-  TEMPLATE_PR_BRANCH,
   TEMPLATE_MAIN_BRANCH,
   REPO_PREFIX,
 } from '../constants';
