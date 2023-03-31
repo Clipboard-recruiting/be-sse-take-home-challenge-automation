@@ -31,7 +31,7 @@ interface CreatePrInterviewPayload {
 
 @Controller()
 export class AppController {
-  constructor(private readonly prInterviewService: PrInterviewService) {}
+  constructor(private readonly interviewService: PrInterviewService) {}
 
   @Get('health-check/public')
   async public(@Headers() headers) {
@@ -50,37 +50,37 @@ export class AppController {
     };
   }
 
-  @Get('pr-interviews')
+  @Get('be-sse-interviews')
   @UseGuards(AuthGuard)
-  async getPrInterviews() {
-    const prInterviewRepos = await this.prInterviewService.list();
+  async getInterviews() {
+    const interviewRepos = await this.interviewService.list();
     return {
-      repos: prInterviewRepos,
+      repos: interviewRepos,
     };
   }
 
-  @Post('pr-interviews')
+  @Post('be-sse-interviews')
   @UseGuards(AuthGuard)
-  async createPrInterview(
-    @Body() createPrInterviewPayload: CreatePrInterviewPayload,
+  async createInterview(
+    @Body() createInterviewPayload: CreatePrInterviewPayload,
   ) {
-    const { username } = createPrInterviewPayload;
-    const createdPrInterviewRepo = await this.prInterviewService.create(
+    const { username } = createInterviewPayload;
+    const createdInterviewRepo = await this.interviewService.create(
       username,
     );
     return {
-      repo: createdPrInterviewRepo,
+      repo: createdInterviewRepo,
     };
   }
 
-  @Delete('pr-interviews/:repoName')
+  @Delete('be-sse-interviews/:repoName')
   @UseGuards(AuthGuard)
-  async deletePrInterview(@Param('repoName') repoName: string) {
-    const deletedPrInterviewRepo = await this.prInterviewService.delete(
+  async deleteInterview(@Param('repoName') repoName: string) {
+    const deletedInterviewRepo = await this.interviewService.delete(
       repoName,
     );
     return {
-      repo: deletedPrInterviewRepo,
+      repo: deletedInterviewRepo,
     };
   }
 }
