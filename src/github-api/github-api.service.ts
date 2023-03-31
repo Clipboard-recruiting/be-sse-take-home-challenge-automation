@@ -5,7 +5,7 @@ import {
   ORG_NAME,
   TEMPLATE_PR_BRANCH,
   TEMPLATE_MAIN_BRANCH,
-  CANDITATE_PR_REVIEW_REPO_PREFIX,
+  REPO_PREFIX,
 } from '../constants';
 
 export interface Repo {
@@ -53,7 +53,7 @@ function formatInvite(githubInvite): Collaborator {
 
 function isCandidatePrReviewRepo(repo) {
   const hasCandidatePrReviewNaming = repo.name.includes(
-    CANDITATE_PR_REVIEW_REPO_PREFIX,
+    REPO_PREFIX,
   );
   const isTemplate =
     repo.name.includes('template') || repo.name.includes('base');
@@ -87,7 +87,7 @@ export class GithubApiService {
 
       return formatRepo(response.data);
     },
-    async listPrInterviewRepos() {
+    async listInterviewRepos() {
       const response = await this.octokit.rest.repos.listForOrg({
         org: ORG_NAME,
         sort: 'created_at',

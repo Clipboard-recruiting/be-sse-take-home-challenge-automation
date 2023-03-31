@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { GithubCliService } from '../github-cli/github-cli.service';
 import { GithubApiService } from '../github-api/github-api.service';
-import { CANDITATE_PR_REVIEW_REPO_PREFIX } from '../constants';
+import { REPO_PREFIX } from '../constants';
 
 /************ Utils ************/
 function sleep(ms) {
@@ -19,7 +19,7 @@ function getNextIncrementingRepoId(repos) {
 }
 
 @Injectable()
-export class PrInterviewService {
+export class InterviewService {
   constructor(
     private githubCliService: GithubCliService,
     private githubApiService: GithubApiService,
@@ -28,7 +28,7 @@ export class PrInterviewService {
   // Fetch PR interview repos, add collaborators and invites to repo
   // data.
   async list() {
-    const repos = await this.githubApiService.repos.listPrInterviewRepos();
+    const repos = await this.githubApiService.repos.listInterviewRepos();
 
     const listCollaboratorRequests = repos.map((repo) =>
       this.githubApiService.collaborators.list(repo.name),
@@ -51,9 +51,9 @@ export class PrInterviewService {
 
   async create(username) {
     // Create a new repo
-    const repos = await this.githubApiService.repos.listPrInterviewRepos();
+    const repos = await this.githubApiService.repos.listInterviewRepos();
     const nextRepoId = getNextIncrementingRepoId(repos);
-    const candidateRepoName = `${CANDITATE_PR_REVIEW_REPO_PREFIX}-${nextRepoId}`;
+    const candidateRepoName = `${REPO_PREFIX}-${nextRepoId}`;
 
     const candidateRepo = await this.githubApiService.repos.create(
       candidateRepoName,

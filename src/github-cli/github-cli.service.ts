@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 
 import { Injectable } from '@nestjs/common';
 import {
-  PR_REVIEW_TEMPLATE_REPO,
+  TEMPLATE_REPO,
   GIT_CLONE_URL,
   GIT_PUSH_URL_BASE,
   TEMP_DIR,
@@ -85,22 +85,22 @@ export class GithubCliService {
     // from cloned template directory, git switch main
     await this.git({
       command: `switch ${TEMPLATE_MAIN_BRANCH}`,
-      at: `${TEMP_DIR}/${PR_REVIEW_TEMPLATE_REPO}`,
+      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
     });
     // from template directory, git push main to PR repo
     await this.git({
       command: `push ${GIT_PUSH_URL_BASE}${repoName}.git`,
-      at: `${TEMP_DIR}/${PR_REVIEW_TEMPLATE_REPO}`,
+      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
     });
     // from template directory, git switch pr-branch
     await this.git({
       command: `switch ${TEMPLATE_PR_BRANCH}`,
-      at: `${TEMP_DIR}/${PR_REVIEW_TEMPLATE_REPO}`,
+      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
     });
     // from template directory, git push pr-branch to PR repo
     await this.git({
       command: `push ${GIT_PUSH_URL_BASE}${repoName}.git`,
-      at: `${TEMP_DIR}/${PR_REVIEW_TEMPLATE_REPO}`,
+      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
     });
 
     await this.removeTempDirectory();

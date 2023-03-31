@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { PrInterviewService } from './pr-interview/pr-interview.service';
+import { InterviewService } from './pr-interview/pr-interview.service';
 
 const API_PASSWORD = 'API_PASS';
 
@@ -31,7 +31,7 @@ interface CreatePrInterviewPayload {
 
 @Controller()
 export class AppController {
-  constructor(private readonly interviewService: PrInterviewService) {}
+  constructor(private readonly interviewService: InterviewService) {}
 
   @Get('health-check/public')
   async public(@Headers() headers) {
