@@ -67,9 +67,6 @@ export class InterviewService {
     // of time for the new repo to 'propagate' internally.
     await sleep(1000);
 
-    // Clone the template locally and push its branches to the repo
-    await this.githubCliService.pushTemplateBranchesTo(candidateRepo.name);
-
     // Invite candidate username to repo
     const invitee = await this.githubApiService.collaborators.invite(
       candidateRepo.name,
