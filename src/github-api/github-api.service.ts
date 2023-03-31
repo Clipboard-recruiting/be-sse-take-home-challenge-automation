@@ -102,21 +102,6 @@ export class GithubApiService {
     },
   };
 
-  pullRequests = {
-    octokit: this.octokit,
-    async createInterviewPr(repoName) {
-      const response = await this.octokit.rest.pulls.create({
-        owner: ORG_NAME,
-        repo: repoName,
-        title: 'Add worker rate and block',
-        head: TEMPLATE_PR_BRANCH,
-        base: TEMPLATE_MAIN_BRANCH,
-        body: `Adds a "rating" column to the "ShiftAssignment" table, allowing workers to be rated by the facility they work at.\nAdds a new "BlockedWorker" table to keep track of workers who have been blocked from working at a particular facility.\nUpdates controllers / services to support new rating & block features.`
-      });
-      return response.data;
-    },
-  };
-
   collaborators = {
     octokit: this.octokit,
     async invite(repoName, collaboratorUsername) {

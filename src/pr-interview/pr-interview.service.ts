@@ -70,11 +70,6 @@ export class InterviewService {
     // Clone the template locally and push its branches to the repo
     await this.githubCliService.pushTemplateBranchesTo(candidateRepo.name);
 
-    // Create a pull request on the interview repo
-    await this.githubApiService.pullRequests.createInterviewPr(
-      candidateRepo.name,
-    );
-
     // Invite candidate username to repo
     const invitee = await this.githubApiService.collaborators.invite(
       candidateRepo.name,

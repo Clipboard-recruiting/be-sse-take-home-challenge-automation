@@ -92,16 +92,6 @@ export class GithubCliService {
       command: `push ${GIT_PUSH_URL_BASE}${repoName}.git`,
       at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
     });
-    // from template directory, git switch pr-branch
-    await this.git({
-      command: `switch ${TEMPLATE_PR_BRANCH}`,
-      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
-    });
-    // from template directory, git push pr-branch to PR repo
-    await this.git({
-      command: `push ${GIT_PUSH_URL_BASE}${repoName}.git`,
-      at: `${TEMP_DIR}/${TEMPLATE_REPO}`,
-    });
 
     await this.removeTempDirectory();
   }
