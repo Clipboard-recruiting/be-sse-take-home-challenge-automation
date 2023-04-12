@@ -91,7 +91,7 @@ export class GithubApiService {
         org: ORG_NAME,
         sort: 'created_at',
         direction: 'desc',
-        per_page: 30,
+        per_page: 100,
       });
       const repos = response.data;
       const candidatePrReviewRepos = repos.filter((repo) =>
