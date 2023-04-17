@@ -138,6 +138,7 @@ export class GithubApiService {
         owner: ORG_NAME,
         repo: repoName,
         team_slug: TEAM_ID,
+        permission: 'maintain',
       });
     },
   };
