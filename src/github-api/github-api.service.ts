@@ -5,6 +5,7 @@ import {
   ORG_NAME,
   TEMPLATE_MAIN_BRANCH,
   REPO_PREFIX,
+  TEAM_ID,
 } from '../constants';
 
 export interface Repo {
@@ -73,6 +74,7 @@ export class GithubApiService {
         org: ORG_NAME,
         name: repoName,
         private: true,
+        team_id: TEAM_ID,
       });
 
       return formatRepo(response.data);
