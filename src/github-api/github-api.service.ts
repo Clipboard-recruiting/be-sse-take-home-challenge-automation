@@ -74,7 +74,6 @@ export class GithubApiService {
         org: ORG_NAME,
         name: repoName,
         private: true,
-        team_id: TEAM_ID,
       });
 
       return formatRepo(response.data);
