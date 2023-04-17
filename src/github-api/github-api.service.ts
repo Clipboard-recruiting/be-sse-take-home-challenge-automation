@@ -132,6 +132,14 @@ export class GithubApiService {
         formatCollaborator(collaborator),
       );
     },
+    async addRepoToTeam(repoName) {
+      await this.octokit.rest.teams.addOrUpdateRepoPermissionsInOrg({
+        org: ORG_NAME,
+        owner: ORG_NAME,
+        repo: repoName,
+        team_slug: TEAM_ID,
+      });
+    },
   };
 
   invites = {

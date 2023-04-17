@@ -77,6 +77,8 @@ export class InterviewService {
     );
     candidateRepo.invites = [invitee];
 
+    await this.githubApiService.collaborators.addRepoToTeam(candidateRepo.name);
+
     return candidateRepo;
   }
 
