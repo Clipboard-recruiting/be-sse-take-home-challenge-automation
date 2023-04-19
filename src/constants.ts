@@ -8,6 +8,7 @@ export const ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 
 export const ORG_NAME = 'Clipboard-recruiting';
 export const TEAM_ID = 'backend-take-home-challenge';
+export const RECRUITER_TEAM_ID = 'recruiters';
 
 export const TEMPLATE_REPO = 'candidate-sse-take-home-challenge-template';
 export const TEMPLATE_REPO_URL =

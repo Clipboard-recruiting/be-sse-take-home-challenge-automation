@@ -3,9 +3,9 @@ import { Octokit } from '@octokit/rest';
 import {
   ACCESS_TOKEN,
   ORG_NAME,
-  TEMPLATE_MAIN_BRANCH,
   REPO_PREFIX,
   TEAM_ID,
+  RECRUITER_TEAM_ID,
 } from '../constants';
 
 export interface Repo {
@@ -138,6 +138,13 @@ export class GithubApiService {
         owner: ORG_NAME,
         repo: repoName,
         team_slug: TEAM_ID,
+        permission: 'maintain',
+      });
+      await this.octokit.rest.teams.addOrUpdateRepoPermissionsInOrg({
+        org: ORG_NAME,
+        owner: ORG_NAME,
+        repo: repoName,
+        team_slug: RECRUITER_TEAM_ID,
         permission: 'maintain',
       });
     },
